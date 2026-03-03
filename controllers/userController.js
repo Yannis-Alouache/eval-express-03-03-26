@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
 const SALT_ROUNDS = 10;
@@ -80,6 +81,68 @@ const createUser = async (req, res) => {
   }
 };
 
+const signIn = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Validate required fields
+    if (!email || !password) {
+      return res.status(400).json({
+        error: 'Email and password are required'
+      });
+    }
+
+    // Find user by email
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return res.status(401).json({
+        error: 'Invalid credentials'
+      });
+    }
+
+    // Compare password
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({
+        error: 'Invalid credentials'
+      });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+        role: user.role
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: '24h' }
+    );
+
+    // Return user data and token
+    const userResponse = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      manager_id: user.manager_id,
+      created_at: user.created_at,
+      updated_at: user.updated_at
+    };
+
+    res.status(200).json({
+      user: userResponse,
+      token
+    });
+  } catch (error) {
+    console.error('Error signing in:', error);
+    res.status(500).json({
+      error: 'Internal server error'
+    });
+  }
+};
+
 module.exports = {
   createUser,
+  signIn,
 };
