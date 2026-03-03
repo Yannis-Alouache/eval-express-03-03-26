@@ -1,0 +1,12 @@
+{
+  "version": "1",
+  "name": "Ticketing API",
+  "type": "collection",
+  "ignore": ["node_modules", ".git"],
+  "collections": [
+    {
+      "name": "Users",
+      "path": "./users"
+    }
+  ]
+}

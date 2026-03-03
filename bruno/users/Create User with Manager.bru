@@ -1,0 +1,25 @@
+meta {
+  name: Create User with Manager
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "Team Member",
+    "email": "team@example.com",
+    "password": "teamPassword123",
+    "role": "collaborateur",
+    "manager_id": 2
+  }
+}

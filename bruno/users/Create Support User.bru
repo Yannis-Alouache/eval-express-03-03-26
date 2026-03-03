@@ -1,0 +1,24 @@
+meta {
+  name: Create Support User
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "Support Agent",
+    "email": "support@example.com",
+    "password": "supportPassword123",
+    "role": "support"
+  }
+}
