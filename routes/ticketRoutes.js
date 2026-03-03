@@ -2,20 +2,18 @@ const express = require('express');
 const router = express.Router();
 const ticketController = require('../controllers/ticketController');
 const auth = require('../middleware/auth.middleware');
-const managerOnly = require('../middleware/managerAuth.middleware');
+const isPermitted = require('../middleware/role.middleware');
 
+const allRoles = isPermitted('collaborateur', 'support', 'manager');
 
-// Create ticket
-router.post('/', ticketController.createTicket);
+router.post('/', auth, isPermitted('collaborateur'), ticketController.createTicket);
 // List all tickets
-router.get('/', ticketController.listTickets);
+router.get('/', auth, allRoles, ticketController.listTickets);
 // Get ticket by ID
-router.get('/:id', ticketController.getTicket);
+router.get('/:id', auth, allRoles, ticketController.getTicket);
 // Update ticket
-router.put('/:id', ticketController.updateTicket);
-// Delete ticket
-router.delete('/:id', ticketController.deleteTicket);
-// Update ticket priority (Manager only)
-router.patch('/:id/priority', auth, managerOnly, ticketController.updateTicketPriority);
+router.put('/:id', auth, isPermitted('collaborateur'), ticketController.updateTicket);
+// Update ticket priority (manager only)
+router.patch('/:id/priority', auth, isPermitted('manager'), ticketController.updateTicketPriority);
 
 module.exports = router;
