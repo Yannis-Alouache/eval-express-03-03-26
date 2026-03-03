@@ -11,6 +11,8 @@ app.use(express.json());
 
 // Routes
 app.use('/users', userRoutes);
+const ticketRoutes = require('./routes/ticketRoutes');
+app.use('/tickets', ticketRoutes);
 
 // Start server after database sync
 const startServer = async () => {
