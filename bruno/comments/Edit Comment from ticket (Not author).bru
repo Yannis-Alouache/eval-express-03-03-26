@@ -1,0 +1,30 @@
+meta {
+  name: Edit Comment from ticket (Not author)
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/comments/1/2
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwicm9sZSI6Im1hbmFnZXIiLCJpYXQiOjE3NzI1MzEzMjEsImV4cCI6MTc3MjYxNzcyMX0.L45RYGEEilBBB0AA8LTu2oaitcASLzW8kjtlWAlFg3E
+}
+
+body:json {
+  {
+    "content": "Ceci est un comm modifié !"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
