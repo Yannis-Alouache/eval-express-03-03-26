@@ -4,6 +4,7 @@ const { syncDatabase } = require('./models');
 const userRoutes = require('./routes/userRoutes');
 const ticketRoutes = require('./routes/ticketRoutes');
 const commentRoutes = require('./routes/commentRoutes');
+const seedDatabase = require('./db/seed');
 
 const app = express();
 const port = process.env.APP_PORT ?? 3000;
