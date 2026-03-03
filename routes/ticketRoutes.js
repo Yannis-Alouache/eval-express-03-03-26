@@ -12,6 +12,8 @@ router.get('/', ticketController.listTickets);
 router.get('/:id', ticketController.getTicket);
 // Update ticket
 router.put('/:id', ticketController.updateTicket);
+// Update status
+router.patch('/:id/status', ticketController.updateStatus);
 // Delete ticket
 router.delete('/:id', ticketController.deleteTicket);
 
