@@ -1,9 +1,10 @@
 {
   "dependencies": {
     "@sequelize/sqlite3": "^7.0.0-alpha.48",
+    "bcrypt": "^6.0.0",
     "express": "^5.2.1",
-    "sequelize": "^6.37.7",
-    "jsonwebtoken": "^9.0.3"
+    "jsonwebtoken": "^9.0.3",
+    "sequelize": "^6.37.7"
   },
   "name": "eval-express-03-03-26",
   "version": "1.0.0",
