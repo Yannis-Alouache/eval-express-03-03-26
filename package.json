@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "name": "eval-express-03-03-26",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yannis-Alouache/eval-express-03-03-26.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yannis-Alouache/eval-express-03-03-26/issues"
+  },
+  "homepage": "https://github.com/Yannis-Alouache/eval-express-03-03-26#readme",
+  "description": ""
+}
