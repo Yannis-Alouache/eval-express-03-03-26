@@ -1,7 +1,22 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../db/database');
+const { User } = require("./User")
 
-class Ticket extends Model {}
+class Ticket extends Model {
+
+  /**
+   * Returns true if the user is the author of the ticket. False otherwise
+   * @param {User} user
+   */
+  isUserAuthor(user) {
+    if( !(user instanceof User) ) {
+      return false
+    }
+
+    // no db fetch
+    return this.author_id === user.id;
+  }
+}
 
 Ticket.init({
   id: {
