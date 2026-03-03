@@ -1,9 +1,10 @@
 const express = require('express');
-const userRoutes = require('./routes/userRoutes');
+require("dotenv").config()
 const { syncDatabase } = require('./models');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
-const PORT = 3000;
+const port = process.env.APP_PORT ?? 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -15,8 +16,8 @@ app.use('/users', userRoutes);
 const startServer = async () => {
   try {
     await syncDatabase();
-    app.listen(PORT, () => {
-      console.log(`Server running at http://localhost:${PORT}`);
+    app.listen(port, () => {
+      console.log(`Server running at http://localhost:${port}`);
     });
   } catch (error) {
     console.error('Failed to start server:', error);
