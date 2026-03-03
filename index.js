@@ -1,6 +1,5 @@
 const express = require('express');
 require("dotenv").config()
-
 const { syncDatabase } = require('./models');
 const userRoutes = require('./routes/userRoutes');
 

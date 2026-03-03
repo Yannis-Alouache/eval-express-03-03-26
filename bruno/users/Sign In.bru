@@ -1,0 +1,22 @@
+meta {
+  name: Sign In
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/users/signin
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "john@example.com",
+    "password": "securePassword123"
+  }
+}
