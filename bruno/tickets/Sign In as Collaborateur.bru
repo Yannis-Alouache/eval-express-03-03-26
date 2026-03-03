@@ -1,0 +1,29 @@
+meta {
+  name: Sign In as Collaborateur
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/users/signin
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "john@example.com",
+    "password": "securePassword123"
+  }
+}
+
+script:post-response {
+  const response = res.getBody();
+  if (response && response.token) {
+    bru.setVar('token', response.token);
+  }
+}

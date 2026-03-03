@@ -1,0 +1,35 @@
+meta {
+  name: Create Ticket
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/tickets
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{jwt}}
+}
+
+body:json {
+  {
+    "title": "Bug in login page",
+    "description": "Users cannot login with special characters in password",
+    "category": "bug",
+    "priority": "low",
+    "author_id": 1,
+    "status": "open"
+  }
+}
+
+vars:pre-request {
+  jwt: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ0ZWFtQGV4YW1wbGUuY29tIiwicm9sZSI6ImNvbGxhYm9yYXRldXIiLCJpYXQiOjE3NzI1MzI2NjgsImV4cCI6MTc3MjYxOTA2OH0.hqyPlCMKzEBUOB69NiIJODY_Zm-VQC78Ou1OKCbAMek
+  baseUrl: http://localhost:3000
+}

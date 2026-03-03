@@ -1,0 +1,29 @@
+meta {
+  name: Sign In as Manager
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/users/signin
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "manager@example.com",
+    "password": "managerPassword123"
+  }
+}
+
+script:post-response {
+  const response = res.getBody();
+  if (response && response.token) {
+    bru.setVar('token', response.token);
+  }
+}
