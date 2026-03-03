@@ -1,0 +1,13 @@
+{
+  "name": "Modifier un ticket",
+  "method": "PUT",
+  "url": "http://localhost:3000/tickets/1",
+  "headers": [
+    { "name": "Content-Type", "value": "application/json" },
+    { "name": "Authorization", "value": "Bearer {{token}}" }
+  ],
+  "body": {
+    "title": "Titre modifié",
+    "description": "Description modifiée"
+  }
+}

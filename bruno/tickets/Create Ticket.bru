@@ -1,0 +1,16 @@
+{
+  "name": "Créer un ticket",
+  "method": "POST",
+  "url": "http://localhost:3000/tickets",
+  "headers": [
+    { "name": "Content-Type", "value": "application/json" },
+    { "name": "Authorization", "value": "Bearer {{token}}" }
+  ],
+  "body": {
+    "title": "Test Ticket",
+    "description": "Description du ticket",
+    "category": "bug",
+    "priority": "low",
+    "assigned_to": null
+  }
+}
