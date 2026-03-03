@@ -38,12 +38,12 @@ const canTicketPassToStatus = (newStatus, ticket, user) => {
     }
 
     // if the role is not the next role
-    if( newStatus !== currentStatus.next ) {
+    if( newStatus !== currentMapItemStatus.next ) {
         return false
     }
 
     //if the user can change to this status
-    return currentStatus.roles.includes(user.role);
+    return currentMapItemStatus.roles.includes(user.role);
 }
 
 module.exports = {

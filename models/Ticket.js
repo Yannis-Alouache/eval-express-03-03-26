@@ -9,10 +9,6 @@ class Ticket extends Model {
    * @param {User} user
    */
   isUserAuthor(user) {
-    if( !(user instanceof User) ) {
-      return false
-    }
-
     // no db fetch
     return this.author_id === user.id;
   }
